@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type='module'>
+    import 小明 from './module-export-default-ex2.js';
+    小明.fn();  // 小明
+    
+    // 重覆呼叫模組，透過不同的模組名稱使用
+    import ming from './module-export-default-ex2.js';
+    ming.fn();  // 小明
+  </script>
+</body>
+</html>

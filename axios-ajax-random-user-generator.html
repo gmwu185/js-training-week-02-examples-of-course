@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // console.log('axios', axios);
+    // console.log('axios.get', axios.get);
+    // console.log('axios.get()', axios.get());
+    
+    const APIPath = 'https://randomuser.me/api/';
+    axios.get(APIPath)
+      .then((res) => {
+        console.log('then() res', res);
+      })
+      .catch((res)=>{
+        console.log('catch() res', res);
+      })
+  </script>
+</body>
+</html>

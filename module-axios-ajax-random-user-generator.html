@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module">
+    const obj = {
+      data: [],
+      getData() {
+        const vm = this; // var vm = this; // simple call 執行函式使用
+        const APIPath = 'https://randomuser.me/api/';
+        axios.get(APIPath)
+          // .then(function(res) {
+          //   // console.log('this.data', this.data);
+          //   // 使用 simple call 執行函式取得的 this 是全域的 this，所以會找不到 data 的內容，取不到資料就不會往下執行
+          //   console.log('vm.data', vm.data);
+          //   // 在 obj 物件下 getData() 的 this 指給 vm 是，確保取得的 this 是在 obj 物件下
+          //   console.log('then() getData', res.data.results);
+          // })
+          // .catch(function(res) {
+          //   console.log('catch() res', res);
+          // })
+
+          .then((res) => {
+            console.log('getData then(res.data.results)', res.data.results);
+            this.data = res.data.results;
+            console.log('this.data', this.data);  // 使用箭頭函式執行，取得的 this 是 obj 下的 this
+            this.render();
+          })
+          .catch((res) => {
+            console.log('catch() res', res);
+          })
+      },
+      render() {
+        console.log('render() this', this.data);
+        document.querySelector('#app').innerHTML = `
+          透過 axios .then AJAX 取得資料後的部份呈現於畫面：<br>
+          email: <a href="mailto:${this.data[0].email}" tarage='new'>${this.data[0].email}</a>
+        `;
+      }
+    };
+    obj.getData();
+  </script>
+</body>
+</html>

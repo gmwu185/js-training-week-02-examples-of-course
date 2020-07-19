@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="module">
+    // import 方式一，在 {} 中加入名稱，中間以 , 英文字元逗號隔開。
+    // import { a, fn } from './module-export-named-ex1.js';
+
+    // import 方式二， 分刟於要執行的前方又或是最上方匯入，自各自的 import {} from '../path'; 
+    // import { a } from './module-export-named-ex1.js';
+    // import { fn } from './module-export-named-ex1.js';
+
+    // 執行 import 的結果
+    // console.log('import { a } -> ', a);
+    // fn();
+
+    // import 方式三，一次全取
+    import * as all from './module-export-named-ex1.js';
+    console.log('import all', all);
+  </script>
+</body>
+</html>
